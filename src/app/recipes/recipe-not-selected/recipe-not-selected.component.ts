@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, RouterEvent, Params } from '@angular/router';
+import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipes.service';
 
 @Component({
   selector: 'app-recipe-not-selected',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeNotSelectedComponent implements OnInit {
 
+ 
+ 
   constructor() { }
 
   ngOnInit() {
+    
+
   }
+
+  
 
 }

@@ -8,7 +8,7 @@ import { NewrecipeComponent } from "./recipes/newrecipe/newrecipe.component";
 import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
 
 
-const route: Routes = [{ path: '', redirectTo: '/recipes', pathMatch: 'full' }, { path: 'recipes', component: RecipesComponent, children: [{ path: '', component: RecipeNotSelectedComponent, pathMatch: 'full' }, { path: 'new', component: NewrecipeComponent }, { path: 'edit', component: RecipeEditComponent }, { path: ':id', component: RecipeDetailsComponent }] }, { path: 'shoppinglist', component: ShoppingListComponent }];
+const route: Routes = [{ path: '', redirectTo: '/recipes', pathMatch: 'full' }, { path: 'recipes', component: RecipesComponent, children: [{ path: '', component: RecipeNotSelectedComponent, pathMatch: 'full' }, { path: 'new', component: RecipeEditComponent }, { path: ':id', component: RecipeDetailsComponent }, { path: ':id/edit', component: RecipeEditComponent }] }, { path: 'shoppinglist', component: ShoppingListComponent }];
 @NgModule({
     imports: [
         RouterModule.forRoot(route)
