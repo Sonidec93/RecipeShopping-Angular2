@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormArray, Validators, FormControl, FormArrayName } from '@angular/forms';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipes.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
@@ -47,7 +47,7 @@ export class RecipeEditComponent implements OnInit {
       'ingredients': ingredientsArray
 
     })
-    console.log(this.recipeForm);
+    // console.log(this.recipeForm);
   }
 
   ngOnInit() {
@@ -62,8 +62,27 @@ export class RecipeEditComponent implements OnInit {
 
 
   }
+  removeIngredient(index:number){
+    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
 
+  }
+cancelChanges(){
+  this.router.navigate(['/recipes']);
+}
   saveRecipe() {
-    console.log(this.recipeForm);
+    if(this.recipeEditFlag){
+      this.recipeService.updateRecipe(this.recipeIndex,this.recipeForm.value);
+    }
+    else{
+      this.recipeService.addNewRecipe(this.recipeForm.value);
+    }
+    this.router.navigate(['/recipes']);
+  }
+  addNewIngredient(){
+    var control=new FormGroup({
+      'name':new FormControl(null,Validators.required),
+    "amount":new FormControl(null,[Validators.required,Validators.pattern(/^[1-9]+[0-9]*$/)])
+    });
+    (<FormArray>this.recipeForm.get('ingredients')).push(control);
   }
 }

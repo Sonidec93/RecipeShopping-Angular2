@@ -1,4 +1,6 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { DataService } from '../shared/data.service';
+import { Response } from '@angular/http';
 
 
 @Component({
@@ -11,9 +13,18 @@ export class HeaderComponent implements OnInit {
   onSelect(feature:string){
     this.featureSelected.emit(feature);
 }
-  constructor() { }
+  constructor(private dataservice:DataService) { }
 
   ngOnInit() {
+  }
+  storeRecipes(){
+
+    this.dataservice.storeRecipes().subscribe((response:Response)=>{
+      console.log(response);
+    })
+  }
+  fetchRecipes(){
+    this.dataservice.getRecipes();
   }
 
 }

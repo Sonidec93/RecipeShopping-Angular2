@@ -18,6 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecipeNotSelectedComponent } from './recipes/recipe-not-selected/recipe-not-selected.component';
 import { NewrecipeComponent } from './recipes/newrecipe/newrecipe.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { RecipeService } from './recipes/recipes.service';
+import { DataService } from './shared/data.service';
 
 // const routes: Routes = [{ path: 'recipes', component: RecipesComponent, pathMatch: 'full' }, { path: 'shoppinglist', component: ShoppingListComponent, pathMatch: 'full' }];
 @NgModule({
@@ -43,7 +45,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     // RouterModule.forRoot(routes)
     AppRoutingModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService,RecipeService,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
