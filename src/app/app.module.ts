@@ -20,8 +20,12 @@ import { NewrecipeComponent } from './recipes/newrecipe/newrecipe.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipes/recipes.service';
 import { DataService } from './shared/data.service';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthService } from './auth/auth.service';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { AuthguardService } from './auth/authguard.service';
 
-// const routes: Routes = [{ path: 'recipes', component: RecipesComponent, pathMatch: 'full' }, { path: 'shoppinglist', component: ShoppingListComponent, pathMatch: 'full' }];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +39,9 @@ import { DataService } from './shared/data.service';
     DropdownDirective,
     RecipeNotSelectedComponent,
     NewrecipeComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    SignupComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,7 @@ import { DataService } from './shared/data.service';
     // RouterModule.forRoot(routes)
     AppRoutingModule
   ],
-  providers: [ShoppingListService,RecipeService,DataService],
+  providers: [ShoppingListService,RecipeService,DataService,AuthguardService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

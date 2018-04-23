@@ -1,6 +1,8 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../shared/data.service';
 import { Response } from '@angular/http';
+import { AuthService } from '../auth/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -9,21 +11,27 @@ import { Response } from '@angular/http';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-@Output() featureSelected=new EventEmitter<string>();
-  onSelect(feature:string){
+  @Output() featureSelected = new EventEmitter<string>();
+  onSelect(feature: string) {
     this.featureSelected.emit(feature);
-}
-  constructor(private dataservice:DataService) { }
+  }
+  constructor(private dataservice: DataService,private authService:AuthService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
   }
-  storeRecipes(){
 
-    this.dataservice.storeRecipes().subscribe((response:Response)=>{
+  logout(){
+    this.authService.logout();
+    
+    
+  }
+  storeRecipes() {
+
+    this.dataservice.storeRecipes().subscribe((response: Response) => {
       console.log(response);
     })
   }
-  fetchRecipes(){
+  fetchRecipes() {
     this.dataservice.getRecipes();
   }
 
