@@ -11,7 +11,7 @@ import { SignInComponent } from "./auth/sign-in/sign-in.component";
 import { AuthguardService } from "./auth/authguard.service";
 
 
-const route: Routes = [{ path: '', redirectTo: '/signIn', pathMatch: 'full' },{path:'signup',component:SignupComponent},{path:'signIn',component:SignInComponent}, { path: 'recipes', component: RecipesComponent,canActivate:[AuthguardService], children: [{ path: '', component: RecipeNotSelectedComponent, pathMatch: 'full' }, { path: 'new', component: RecipeEditComponent }, { path: ':id', component: RecipeDetailsComponent }, { path: ':id/edit', component: RecipeEditComponent }] }, { path: 'shoppinglist', canActivate:[AuthguardService],canActivateChild:[AuthguardService] ,component: ShoppingListComponent }];
+const route: Routes = [{ path: '', redirectTo: '/signIn', pathMatch: 'full' },{path:'signup',component:SignupComponent},{path:'signIn',component:SignInComponent}, { path: 'recipes', component: RecipesComponent,canActivate:[AuthguardService], children: [{ path: '', component: RecipeNotSelectedComponent, pathMatch: 'full' }, { path: 'new', component: RecipeEditComponent }, { path: ':id', component: RecipeDetailsComponent }, { path: ':id/edit', component: RecipeEditComponent }] }, { path: 'shoppinglist', canActivate:[AuthguardService] ,component: ShoppingListComponent }];
 @NgModule({
     imports: [
         RouterModule.forRoot(route)
