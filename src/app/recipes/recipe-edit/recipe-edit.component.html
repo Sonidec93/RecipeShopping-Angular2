@@ -21,7 +21,8 @@
         <img [src]="recipeForm.get('imagePath').value"  class="img-responsive" alt="Unable to load">
       </div>
       <div formArrayName="ingredients">
-        <div class="row" [formGroupName]="i" *ngFor="let ingr of recipeForm.get('ingredients').controls;let i=index">
+        <!-- <div class="row" [formGroupName]="i" *ngFor="let ingr of recipeForm.get('ingredients').controls;let i=index"> -->
+          <div class="row" [formGroupName]="i" *ngFor="let ingr of getArray();let i=index">
           <div class="col-xs-4" >
             <input type="text"  formControlName="name">
             <span *ngIf="recipeForm.get('ingredients').controls[i].get('name').errors?.required">This value is required</span>

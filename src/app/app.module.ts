@@ -24,34 +24,31 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthService } from './auth/auth.service';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { AuthguardService } from './auth/authguard.service';
+import { RecipeModule } from './recipes/recipes.module';
+import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
+import { ShoppingRoutingModule } from './shopping-list/shopping-routing.module';
+import { ShoppingModule } from './shopping-list/shopping.module';
+import { CoreModule } from './core.module';
+import { HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RecipesComponent,
-    HeaderComponent,
-    RecipeDetailsComponent,
-    RecipeListComponent,
-    ShoppingListComponent,
-    RecipeItemComponent,
-    ShoppingEditComponent,
-    DropdownDirective,
-    RecipeNotSelectedComponent,
-    NewrecipeComponent,
-    RecipeEditComponent,
-    SignupComponent,
-    SignInComponent
+    AppComponent
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    ReactiveFormsModule,
-    // RouterModule.forRoot(routes)
-    AppRoutingModule
+    // HttpModule,
+    HttpClientModule,
+    AppRoutingModule,
+    SharedModule,
+    AuthModule,
+    ShoppingModule,
+    CoreModule
   ],
-  providers: [ShoppingListService,RecipeService,DataService,AuthguardService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

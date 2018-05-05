@@ -3,6 +3,7 @@ import { DataService } from '../shared/data.service';
 import { Response } from '@angular/http';
 import { AuthService } from '../auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   onSelect(feature: string) {
     this.featureSelected.emit(feature);
   }
-  constructor(private dataservice: DataService,private authService:AuthService,private route:ActivatedRoute,private router:Router) { }
+  constructor(private dataservice: DataService,public authService:AuthService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
   }
@@ -27,9 +28,13 @@ export class HeaderComponent implements OnInit {
   }
   storeRecipes() {
 
-    this.dataservice.storeRecipes().subscribe((response: Response) => {
+    this.dataservice.storeRecipes().subscribe((response) => {
       console.log(response);
     })
+    // this.dataservice.storeRecipes().subscribe((response:HttpEvent<Object>)=>{
+    //     console.log(response.type==HttpEventType.Sent);
+    //     console.log(response.type==HttpEventType.Response);
+    // })
   }
   fetchRecipes() {
     this.dataservice.getRecipes();

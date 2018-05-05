@@ -16,6 +16,7 @@ export class SignInComponent implements OnInit {
 
   signIn(form: NgForm) {
     console.log(form);
+    
     this.authService.signInUser(form.value.email,form.value.password);
     this.router.navigate(['../recipes']);
   }

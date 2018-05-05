@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes, PreloadAllModules } from "@angular/router";
 import { RecipesComponent } from "./recipes/recipes.component";
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { RecipeDetailsComponent } from "./recipes/recipe-details/recipe-details.component";
@@ -11,10 +11,11 @@ import { SignInComponent } from "./auth/sign-in/sign-in.component";
 import { AuthguardService } from "./auth/authguard.service";
 
 
-const route: Routes = [{ path: '', redirectTo: '/signIn', pathMatch: 'full' },{path:'signup',component:SignupComponent},{path:'signIn',component:SignInComponent}, { path: 'recipes', component: RecipesComponent,canActivate:[AuthguardService], children: [{ path: '', component: RecipeNotSelectedComponent, pathMatch: 'full' }, { path: 'new', component: RecipeEditComponent }, { path: ':id', component: RecipeDetailsComponent }, { path: ':id/edit', component: RecipeEditComponent }] }, { path: 'shoppinglist', canActivate:[AuthguardService] ,component: ShoppingListComponent }];
+const route: Routes = [{ path: '', redirectTo: '/signIn', pathMatch: 'full' },{path:'recipes',loadChildren:'./recipes/recipes.module#RecipeModule',canLoad:[AuthguardService]}];
+//canLoad property evaluates if the specified path can be accessed before actually loading it for this i have implemented canLoad function from CanLoad Interface in AuthGuardService
 @NgModule({
     imports: [
-        RouterModule.forRoot(route)
+        RouterModule.forRoot(route,{preloadingStrategy:PreloadAllModules})
     ],
     exports: [
         RouterModule
