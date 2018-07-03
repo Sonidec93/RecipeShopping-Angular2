@@ -30,13 +30,20 @@ import { AuthModule } from './auth/auth.module';
 import { ShoppingRoutingModule } from './shopping-list/shopping-routing.module';
 import { ShoppingModule } from './shopping-list/shopping.module';
 import { CoreModule } from './core.module';
-import { HttpClientModule} from '@angular/common/http';
-
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
+import { reducer } from './store/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth/store/auth.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { RecipeEffects } from './recipes/recipes.effect';
 
 @NgModule({
   declarations: [
     AppComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -47,7 +54,9 @@ import { HttpClientModule} from '@angular/common/http';
     SharedModule,
     AuthModule,
     ShoppingModule,
-    CoreModule
+    CoreModule,
+    StoreModule.forRoot(reducer),
+    EffectsModule.forRoot([AuthEffects])
   ],
   bootstrap: [AppComponent]
 })

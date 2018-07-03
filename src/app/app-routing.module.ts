@@ -12,10 +12,12 @@ import { AuthguardService } from "./auth/authguard.service";
 
 
 const route: Routes = [{ path: '', redirectTo: '/signIn', pathMatch: 'full' },{path:'recipes',loadChildren:'./recipes/recipes.module#RecipeModule',canLoad:[AuthguardService]}];
+// const route: Routes = [{ path: '', redirectTo: '/signIn', pathMatch: 'full' },{path:'recipes',loadChildren:'./recipes/recipes.module#RecipeModule',canLoad:[AuthguardService]}];
 //canLoad property evaluates if the specified path can be accessed before actually loading it for this i have implemented canLoad function from CanLoad Interface in AuthGuardService
 @NgModule({
-    imports: [
+    imports: [  
         RouterModule.forRoot(route,{preloadingStrategy:PreloadAllModules})
+        
     ],
     exports: [
         RouterModule

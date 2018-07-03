@@ -8,4 +8,4 @@
 
 <hr>    
 
-<app-recipe-item *ngFor="let rec of recipes;let i=index" [recipe]="rec" [selectedIndex]="i" ></app-recipe-item>
+<app-recipe-item *ngFor="let rec of (recipeState|async).recipes;let i=index" [recipe]="rec" [selectedIndex]="i" ></app-recipe-item>

@@ -17,11 +17,11 @@
       
       <ul class="nav navbar-nav navbar-right">
         <!--internally ngIf works without the asterik *ngIf is a shortcut to evaluate DOM elements based on the value of the component but for multiple elements we have to use this [ngIf]-->
-        <ng-template [ngIf]="!authService.isAuthenticated()"> 
+        <ng-template [ngIf]="!(authState|async).isAuthenticated"> 
         <li><a [routerLink]="['signup']">Register</a></li>
         <li><a [routerLink]="['signIn']">Login</a></li>
       </ng-template>
-        <li class="dropdown" *ngIf="authService.isAuthenticated()" appDropdown>
+        <li class="dropdown" *ngIf="(authState|async).isAuthenticated" appDropdown>
           <a style="cursor:pointer;" role="button" class="dropdown-toggle">Manage
             <span class="caret"></span>
           </a>

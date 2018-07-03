@@ -11,6 +11,10 @@ import { DropdownDirective } from "../shared/dropdown.directive";
 import { CommonModule } from "@angular/common";
 import { RecipesRoutingModule } from "./recipe-routing.module";
 import { SharedModule } from "../shared/shared.module";
+import { StoreModule } from "@ngrx/store";
+import { recipeReducer } from "./store/recipes.reducer";
+import { EffectsModule } from "@ngrx/effects";
+import { RecipeEffects } from "./recipes.effect";
 
 @NgModule({
     declarations: [
@@ -27,7 +31,9 @@ import { SharedModule } from "../shared/shared.module";
         CommonModule,
         ReactiveFormsModule,
         RecipesRoutingModule,
-        SharedModule
+        SharedModule,
+        StoreModule.forFeature('recipes',recipeReducer),
+        EffectsModule.forFeature([RecipeEffects])
     ]
 })
 export class RecipeModule { }
