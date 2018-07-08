@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, EventEmitter, Output, OnDestr
 import { Ingredient } from '../../shared/ingredient.model'
 import { ShoppingListService } from '../shoppinglist.service';
 import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as ShoppingListActions from '../store/shopping-list.action';
 import * as fromApp from '../../store/app.reducer';

@@ -5,8 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 import { FeatureState } from '../store/recipes.reducer';
-import { IfObservable } from 'rxjs/observable/IfObservable';
-import {Observable} from 'rxjs/observable';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-recipe-list',

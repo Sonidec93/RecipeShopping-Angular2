@@ -6,7 +6,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import * as fromRecipeState from '../store/recipes.reducer';
 import * as fromRecipeAction from '../store/recipes.action';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-recipe-edit',

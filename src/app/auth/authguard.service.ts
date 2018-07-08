@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanLoad, Route } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+import {take,map} from "rxjs/operators"
 import { AuthService } from './auth.service';
 import * as fromApp from '../store/app.reducer';
 import { Store } from '@ngrx/store';
@@ -18,7 +19,7 @@ export class AuthguardService implements CanActivate, CanLoad {
     //   return false;
     // }
 
-    return this.store.select('auth').take(1).map(data => {
+    return this.store.select('auth').pipe(take(1),map(data => {
       // console.log(data.isAuthenticated);
       // if (data.isAuthenticated)
       //   return true;
@@ -28,11 +29,11 @@ export class AuthguardService implements CanActivate, CanLoad {
       // }
       return data.isAuthenticated;
       // return data.isAuthenticated;
-    });
+    }));
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
     // var value;
-    return this.store.select('auth').map(data => {
+    return this.store.select('auth').pipe(map(data => {
 
       // if (data.isAuthenticated)
       //   return true
@@ -42,7 +43,7 @@ export class AuthguardService implements CanActivate, CanLoad {
       // }
 
       return data.isAuthenticated;
-    });
+    }));
     // return value;
     // if(this.authService.isAuthenticated()){
     //   return true;

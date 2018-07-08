@@ -5,7 +5,7 @@ import { AuthService } from '../auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable'
+import { Observable } from 'rxjs'
 import * as fromApp from '../store/app.reducer';
 import { Subscription } from 'rxjs';
 import { AppState } from '../store/app.reducer';
