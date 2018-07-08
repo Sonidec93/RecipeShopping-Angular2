@@ -20,7 +20,7 @@ export class RecipeEffects {
         return from(firebase.auth().currentUser.getIdToken());
     }),switchMap((token: string) => {
         console.log(token);
-        return this.http.get<Recipe[]>('https://recipeproject-8962f.firebaseio.com/recipes.json?auth=' + token, { observe: 'body', responseType: 'json' }).map((recipes: Recipe[]) => {
+        return this.http.get<Recipe[]>('https://recipeproject-8962f.firebaseio.com/recipes.json?auth=' + token, { observe: 'body', responseType: 'json' }).pipe(map((recipes: Recipe[]) => {
             //  const recipes:Recipe []=response.json();//new httpClient know what type of object is coming back and also we have provided a type returning in get 
 
             for (let recipe of recipes) {
@@ -29,7 +29,7 @@ export class RecipeEffects {
                 }
             }
             return recipes;
-        })
+        }))
 
 
     }),map((recipes: Recipe[]) => {

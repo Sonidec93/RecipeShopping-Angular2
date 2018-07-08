@@ -2,7 +2,7 @@ import { Recipe } from "./recipe.model";
 import { EventEmitter, Injectable } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shopping-list/shoppinglist.service";
-import { Subject } from "rxjs/Subject";
+import { Subject } from "rxjs";
 
 
 @Injectable()

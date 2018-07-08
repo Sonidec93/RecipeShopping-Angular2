@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output, OnDestroy } from '@angu
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipes.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { FeatureState } from '../store/recipes.reducer';
 import {Observable} from 'rxjs';
