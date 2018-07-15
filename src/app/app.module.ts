@@ -46,7 +46,7 @@ import { RecipeEffects } from './recipes/recipes.effect';
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId:"my-app"}),
     FormsModule,
     // HttpModule,
     HttpClientModule,
